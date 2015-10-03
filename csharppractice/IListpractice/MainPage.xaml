@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="vm">
-        <ListView Name="list" ItemsSource="{Binding hi}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <ListView Name="list">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

@@ -22,11 +22,10 @@ namespace IListpractice
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public ViewModel vm;
         public MainPage()
         {
             this.InitializeComponent();
-            vm = new ViewModel();
+            list.ItemsSource = new MyList();
         }
 
     }

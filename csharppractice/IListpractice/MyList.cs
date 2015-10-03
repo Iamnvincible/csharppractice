@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IListpractice
 {
-    public class MyList : CollectionBase
+    public class MyList : IList
     {
         public object this[int index]
         {
@@ -28,7 +28,7 @@ namespace IListpractice
         {
             get
             {
-                return 1100;
+                return 2000;
             }
         }
 
@@ -67,7 +67,6 @@ namespace IListpractice
         public int Add(object value)
         {
             throw new NotImplementedException();
-
         }
 
         public void Clear()
