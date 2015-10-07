@@ -25,6 +25,8 @@ namespace ICommondTty
         public MainPage()
         {
             this.InitializeComponent();
+            this.DataContext = new MainViewModel();
+            
         }
     }
 }

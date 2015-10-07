@@ -5,9 +5,25 @@
     xmlns:local="using:ICommondTty"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="btn" Content="hello"/>
+        <StackPanel Orientation="Vertical">
+            <Ellipse Name="elli" Height="{Binding ElementName=sli,Path=Value}" Width="{Binding ElementName=sli,Path=Value}" Fill="CadetBlue"/>
+            <Slider Name="sli" Minimum="0" Maximum="100" Value="{Binding SliderValue, Mode=TwoWay}"></Slider>
+            <Button x:Name="btn" Content="hello" Command="{Binding TestCommand}" CommandParameter="{Binding Path=Height,ElementName=elli}"/>
+            <CheckBox x:Name="chek" Content="checkbox">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior x:Name="EventTriggerBehavior" EventName="Checked">
+                        <Core:InvokeCommandAction Command="{Binding TestCommand}"
+                                              CommandParameter="{Binding Path=Value,ElementName=sli}">
+                        </Core:InvokeCommandAction>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </CheckBox>
+        </StackPanel>
     </Grid>
 </Page>
