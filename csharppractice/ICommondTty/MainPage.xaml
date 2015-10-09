@@ -12,7 +12,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <Ellipse Name="elli" Height="{Binding ElementName=sli,Path=Value}" Width="{Binding ElementName=sli,Path=Value}" Fill="CadetBlue"/>
+            <Ellipse Name="elli" local:ManipulationStartedBehavior.ManipulationStartedCommand="{Binding MainpulationCommand}" ManipulationMode="All" ManipulationStarted="elli_ManipulationStarted" Height="{Binding ElementName=sli,Path=Value}" Width="{Binding ElementName=sli,Path=Value}" Fill="CadetBlue">
+                
+            </Ellipse>
             <Slider Name="sli" Minimum="0" Maximum="100" Value="{Binding SliderValue, Mode=TwoWay}"></Slider>
             <Button x:Name="btn" Content="hello" Command="{Binding TestCommand}" CommandParameter="{Binding Path=Height,ElementName=elli}"/>
             <CheckBox x:Name="chek" Content="checkbox">

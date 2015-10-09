@@ -28,5 +28,10 @@ namespace ICommondTty
             this.DataContext = new MainViewModel();
             
         }
+
+        private void elli_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+
+        }
     }
 }
