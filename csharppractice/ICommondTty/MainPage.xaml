@@ -10,11 +10,15 @@
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     >
 
+    <Page.Resources>
+        <Storyboard x:Name="story1">
+            <DoubleAnimation Storyboard.TargetName="elli" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:3">
+            </DoubleAnimation>
+        </Storyboard>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <Ellipse Name="elli" local:ManipulationStartedBehavior.ManipulationStartedCommand="{Binding MainpulationCommand}" ManipulationMode="All" ManipulationStarted="elli_ManipulationStarted" Height="{Binding ElementName=sli,Path=Value}" Width="{Binding ElementName=sli,Path=Value}" Fill="CadetBlue">
-                
-            </Ellipse>
+            <Ellipse Name="elli" local:ManipulationStartedBehavior.ManipulationStartedCommand="{Binding MainpulationCommand}" ManipulationMode="All" ManipulationStarted="elli_ManipulationStarted" Height="{Binding ElementName=sli,Path=Value}" Width="{Binding ElementName=sli,Path=Value}" Fill="CadetBlue"/>
             <Slider Name="sli" Minimum="0" Maximum="100" Value="{Binding SliderValue, Mode=TwoWay}"></Slider>
             <Button x:Name="btn" Content="hello" Command="{Binding TestCommand}" CommandParameter="{Binding Path=Height,ElementName=elli}"/>
             <CheckBox x:Name="chek" Content="checkbox">

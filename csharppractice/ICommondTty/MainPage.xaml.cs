@@ -25,7 +25,12 @@ namespace ICommondTty
         public MainPage()
         {
             this.InitializeComponent();
-            this.DataContext = new MainViewModel();
+            MainViewModel mainViewModel = new MainViewModel();
+            mainViewModel.UIStoryboard += (s, e) =>
+            {
+                story1.Begin();
+            };
+            this.DataContext = mainViewModel;
             
         }
 

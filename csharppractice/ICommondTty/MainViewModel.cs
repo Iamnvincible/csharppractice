@@ -14,12 +14,15 @@ namespace ICommondTty
         public ICommand TestCommand { get; set; }
         public ICommand MainpulationCommand { get; set; }
         public int SliderValue { get; set; }
+        public EventHandler UIStoryboard;
         public MainViewModel()
         {
             SliderValue = 20;
-            TestCommand = new RelayCommand(async para =>
+            TestCommand = new RelayCommand( para =>
               {
-                  await new MessageDialog("你好" + SliderValue).ShowAsync();
+                  //await new MessageDialog("你好" + SliderValue).ShowAsync();
+                  //动画
+                  if (UIStoryboard != null) UIStoryboard.Invoke(this, new EventArgs());
               }
 
             );
