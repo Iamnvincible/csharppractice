@@ -30,13 +30,7 @@ namespace ICommondTty
             {
                 story1.Begin();
             };
-            this.DataContext = mainViewModel;
-            
-        }
-
-        private void elli_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
-        {
-
+            this.DataContext = mainViewModel;            
         }
     }
 }
