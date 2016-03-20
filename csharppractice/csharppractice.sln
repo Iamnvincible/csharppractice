@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conncetaccess", "conncetacc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncGame", "AsyncGame\AsyncGame.csproj", "{CD595629-CE16-46FF-A4CF-C9E84FF090D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadProgressring", "..\..\cs6\ThreadProgressring\ThreadProgressring.csproj", "{6977D091-D5A4-46E6-986A-5C90763E719F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadProgressring", "ThreadProgressring\ThreadProgressring.csproj", "{6977D091-D5A4-46E6-986A-5C90763E719F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
