@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Data.Json;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+
+namespace DataSerialization
+{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+        }
+
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            Student d = new Student(233,"Bill Gates");
+            List<School> schools = new List<School>();
+            schools.Add(new School("Harvard University", 1));
+            schools.Add(new School(" Lakeside", 2));
+            d.Education = schools;
+            string jsonstr=d.GetJson();
+            this.box.Text = jsonstr;
+
+        }
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            string json= "{\"age\":\"233\",\"name\":\"Bill Gates\",\"education\":[{\"education\":{\"name\":\"Harvard University\",\"rank\":\"1\"}},{\"school\":{\"name\":\" Lakeside\",\"rank\":\"2\"}}]}";
+            Student d = new Student(json);
+            this.box.Text = $"{d.Age},{d.Name},{d.Education[0].Schoolname},{d.Education[1].Schoolname}";
+        }
+    }
+}

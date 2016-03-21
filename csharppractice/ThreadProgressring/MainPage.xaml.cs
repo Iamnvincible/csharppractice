@@ -48,8 +48,9 @@ namespace ThreadProgressring
             }
             Debug.WriteLine(x);
             Debug.WriteLine("-=--------------------------------------------------------");
-
+            //异步执行并得到结果
             x = await getstring(new Uri("http://202.202.43.125/"));
+            //异步赋值在执行
             Task<string> rrrrr = getstring(new Uri("http://202.202.43.125/"));
             var c = await rrrrr;
             Debug.WriteLine(x);
@@ -91,7 +92,6 @@ namespace ThreadProgressring
         }
         async Task<string> getstring(Uri uri)
         {
-
             HttpClient hc = new HttpClient();
             string result = "";
             try
@@ -107,7 +107,6 @@ namespace ThreadProgressring
                 Debug.WriteLine(result);
             }
             return result;
-
         }
     }
 }
