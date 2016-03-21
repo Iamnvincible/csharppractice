@@ -31,14 +31,15 @@ namespace DataSerialization
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            Student d = new Student(233,"Bill Gates");
+            DateTime born = new DateTime(1955, 10, 28);
+            int age = DateTime.Now.Year - born.Year-1 + ((DateTime.Now.Month >= born.Month && DateTime.Now.Day >= born.Day) ? 1 : 0);
+            Student d = new Student(age,"Bill Gates");
             List<School> schools = new List<School>();
             schools.Add(new School("Harvard University", 1));
             schools.Add(new School(" Lakeside", 2));
             d.Education = schools;
             string jsonstr=d.GetJson();
             this.box.Text = jsonstr;
-
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
