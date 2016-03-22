@@ -1,0 +1,38 @@
+﻿[
+  {
+    "age": "60",
+    "name": "Bill Gates",
+    "education": [
+      {
+        "school": {
+          "name": "Harvard University",
+          "rank": "1"
+        }
+      },
+      {
+        "school": {
+          "name": " Lakeside",
+          "rank": "2"
+        }
+      }
+    ]
+  },
+  {
+    "age": "6",
+    "name": "Steve Jobs",
+    "education": [
+      {
+        "school": {
+          "name": "xxx xxxx",
+          "rank": "111"
+        }
+      },
+      {
+        "school": {
+          "name": " yyy",
+          "rank": "2"
+        }
+      }
+    ]
+  }
+]

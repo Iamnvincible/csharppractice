@@ -1,0 +1,40 @@
+﻿"status":200, "version":"16.1.25", "term":"2015-2016学年第2学期", "stuNum":2013211429, "data": [
+  {
+    "hash_day": 0,
+    "hash_lesson": 0,
+    "begin_lesson": 1,
+    "day": "星期一",
+    "lesson": "一二节",
+    "course": "综合实践(硬件综合设计)",
+    "teacher": "",
+    "classroom": "计算机学院实验室S402",
+    "rawWeek": "16周",
+    "weekModel": "all",
+    "weekBegin": 16,
+    "weekEnd": 16,
+    "type": "集中实践",
+    "status": "正常",
+    "period": 2,
+    "_id": "56e6f48fa1c6a086617d29f3",
+    "week": [ 16 ]
+  },
+  {
+    "hash_day": 4,
+    "hash_lesson": 5,
+    "begin_lesson": 11,
+    "day": "星期五",
+    "lesson": "十一二",
+    "course": "云平台实践",
+    "teacher": "",
+    "classroom": "云计算平台S108",
+    "rawWeek": "17周",
+    "weekModel": "all",
+    "weekBegin": 17,
+    "weekEnd": 17,
+    "type": "集中实践",
+    "status": "正常",
+    "period": 2,
+    "_id": "56e6f48fa1c6a086617d29bf",
+    "week": [ 17 ]
+  }
+], "nowWeek":4 }

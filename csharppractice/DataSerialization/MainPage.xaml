@@ -7,9 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center">
-        <Button Name="btn1" Content="序列号" Click="btn1_Click"></Button>
-        <Button Name="btn2" Content="反序列号" Click="btn2_Click"></Button>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch">
+        <Button Name="btn1" Content="C#的序列化" Click="btn1_Click"></Button>
+        <Button Name="btn2" Content="C#的反序列化" Click="btn2_Click"></Button>
         <TextBox Name="box" ></TextBox>
+        <Button Name="btn3" Content="Newtownsoft.json序列化" Click="btn3_Click"></Button>
+        <Button Name="btn4" Content="Newtownsoft.json反序列化" Click="btn4_Click"></Button>
     </StackPanel>
 </Page>

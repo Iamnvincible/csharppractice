@@ -48,5 +48,17 @@ namespace DataSerialization
             Student d = new Student(json);
             this.box.Text = $"{d.Age},{d.Name},{d.Education[0].Schoolname},{d.Education[1].Schoolname}";
         }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            box.Text = "没写!";
+        }
+
+        private async void btn4_Click(object sender, RoutedEventArgs e)
+        {
+            NewtownJsonHelper n = new NewtownJsonHelper();
+            List<Student> s = await n.ReadJsonSample();
+            box.Text = $"转换成功,结果是这个{s.Count.ToString()}，过程看代码。";
+        }
     }
 }
