@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -65,16 +67,32 @@ namespace ThreadProgressring
             var r3 = await httpclient.GetBufferAsync(uri);
             var r33 = r3.ToArray();
             string result = Encoding.UTF8.GetString(r33);
-            char[] aaaa =
-            {
-               (Char)0x4ed6,(Char)0x662f,(Char)0x5a31,(Char)0x4e50,(Char)0x5708,(Char)0x91cc,(Char)0x6700,(Char)0x5bd2,(Char)0x9178,(Char)0x7684,(Char)0x660e,(Char)0x661f,(Char)0xff0c,(Char)0x5374,(Char)0x503c,(Char)0x5f97,(Char)0x6bcf,(Char)0x4e00,(Char)0x4e2a,(Char)0x4eba,(Char)0x5c0a,(Char)0x91cd,(Char)0xff01
-            };
-            foreach (var VARIABLE in aaaa)
-            {
-                Debug.Write(VARIABLE);
-            }
-            //  textblock.Text = await response.Content.ReadAsStringAsync();
+            string humanlike = Decode(result);
+            Debug.Write(humanlike);
+            //char[] aaaa =
+            //{
+            //   (Char)0x4ed6,(Char)0x662f,(Char)0x5a31,(Char)0x4e50,(Char)0x5708,(Char)0x91cc,(Char)0x6700,(Char)0x5bd2,(Char)0x9178,(Char)0x7684,(Char)0x660e,(Char)0x661f,(Char)0xff0c,(Char)0x5374,(Char)0x503c,(Char)0x5f97,(Char)0x6bcf,(Char)0x4e00,(Char)0x4e2a,(Char)0x4eba,(Char)0x5c0a,(Char)0x91cd,(Char)0xff01
+            //};
+            //foreach (var VARIABLE in aaaa)
+            //{
+            //    Debug.Write(VARIABLE);
+            //}
         }
+
+        public static string Decode(string s)
+        {
+            Regex reUnicode = new Regex(@"\\u([0-9a-fA-F]{4})", RegexOptions.Compiled);
+            return reUnicode.Replace(s, m =>
+            {
+                short c;
+                if (short.TryParse(m.Groups[1].Value, System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture, out c))
+                {
+                    return "" + (char)c;
+                }
+                return m.Value;
+            });
+        }
+        //  textblock.Text = await response.Content.ReadAsStringAsync();
 
         private async void longtime(object sender, RoutedEventArgs e)
         {
