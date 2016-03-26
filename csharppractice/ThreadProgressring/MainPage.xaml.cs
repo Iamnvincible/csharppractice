@@ -68,6 +68,8 @@ namespace ThreadProgressring
             var r33 = r3.ToArray();
             string result = Encoding.UTF8.GetString(r33);
             string humanlike = Decode(result);
+            string text = "Aa0严";
+            var cccccccc = Encoding.Unicode.GetBytes(text);
             Debug.Write(humanlike);
             //char[] aaaa =
             //{
