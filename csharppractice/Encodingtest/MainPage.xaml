@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Encodingtest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Encodingtest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Content="得到byteutf8" Click="Button_Click"></Button>
+        <Button Content="得到byteunicode" Click="Button_Click_1"></Button>
+        <TextBox Name="display"></TextBox>
+        <Button Content="写文件" Click="Button_Click_2"></Button>
+        <Button Content="读文件" Click="Button_Click_3"></Button>
+        <Button Content="删文件" Click="Button_Click_4"></Button>
+        <Button Content="写入二进制文件" Click="Button_Click_5"/>
+        <Button Content="读入二进制文件" Click="Button_Click_6"/>
+    </StackPanel>
+</Page>
