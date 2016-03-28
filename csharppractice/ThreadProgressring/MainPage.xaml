@@ -74,7 +74,7 @@
                     </StackPanel>
                 </Grid>
             </Border>
-            
+            <Button Content="testserial" Click="Button_Click_1"></Button>
         </StackPanel>
     </Grid>
 </Page>

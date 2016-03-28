@@ -5,11 +5,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -147,6 +149,25 @@ namespace ThreadProgressring
                 Debug.WriteLine(result);
             }
             return result;
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var applocal = Windows.Storage.ApplicationData.Current.LocalFolder;
+            StorageFile file = await applocal.CreateFileAsync("test.dat", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+
+            //using (Stream stream = await file.OpenStreamForWriteAsync())
+            using (Stream stream = await applocal.OpenStreamForWriteAsync("test.dat", Windows.Storage.CreationCollisionOption.OpenIfExists))
+            {
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Data));
+                ser.WriteObject(stream, new Data { Age = 10000, Name = "林", D = new List<Datas> { new Datas { id = 10086 }, new Datas { id = 100486 }, new Datas { id = 105086 } } });
+            }
+            StorageFile file2 = await applocal.GetFileAsync("test.dat");
+            using (Stream stream = await file2.OpenStreamForReadAsync())
+            {
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Data));
+                var a = (Data)ser.ReadObject(stream);
+            }
         }
     }
 }
