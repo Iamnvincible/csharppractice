@@ -22,9 +22,24 @@ namespace AsyncGame
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        List<string> news = new List<string>();
         public MainPage()
         {
             this.InitializeComponent();
+            string[] s = new string[] { "aa", "bb", "cc" };
+            news.AddRange(s);
+            this.newslist.ItemsSource = news;
+        }
+
+        private void newslist_ItemClick(object sender, ItemClickEventArgs e)
+        {
+        }
+
+        private void newslist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var se = this.newslist.SelectedItem;
+            this.content.Text = "kdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
+
         }
     }
 }
