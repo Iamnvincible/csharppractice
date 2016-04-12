@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="DynamicDataTemplate.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DynamicDataTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:models="using:DynamicDataTemplate.Data">
+    <Page.Resources>
+        <Style x:Name="TimeTextBlock" x:Key="TimeTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="10"></Setter>
+        </Style>
+        <Style x:Name="UsernameTextBlock" x:Key="UsernameTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        <DataTemplate x:Key="newdatatemplate" x:DataType="models:News">
+            <StackPanel Orientation="Vertical" Padding="10" Background="White">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Rectangle RadiusX="25" RadiusY="25" Height="40" Width="40" Margin="0,0,10,0">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{x:Bind user_head}"></ImageBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock Text="{x:Bind user_name}" Style="{StaticResource UsernameTextBlock}"></TextBlock>
+                        <TextBlock Text="{x:Bind time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{x:Bind content}" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+                <GridView Margin="0,10,0,0" ItemsSource="{x:Bind img}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Img">
+                            <Grid Width="120" Height="120">
+                                <Image Source="{Binding img_small_src}" Stretch="Fill"/>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="#FFF7F7F7">
+        <ListView Name="newslist" ItemTemplate="{StaticResource newdatatemplate}" ItemsSource="{x:Bind list,Mode=OneWay}">
+        </ListView>
+    </Grid>
+</Page>
+<!--<StackPanel Orientation="Vertical" Padding="10" Background="White">
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Rectangle RadiusX="25" RadiusY="25" Height=" 40" Width="40" Margin="0,0,10,0">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Assets/dowin10.jpg"></ImageBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock Text="天堂迈舞" Style="{StaticResource UsernameTextBlock}"></TextBlock>
+                        <TextBlock Text="今天19:58" Style="{StaticResource TimeTextBlock}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="hiho一下教你编程系列是hihoCoder推出的帮助大家按照一定知识体系逐渐提高自身编程能力的系列比赛。未来几周我们将和小Hi小Ho一起学习数论算法。数论在数学中有特殊的地位，有一大批牛B闪闪的数学家做出过令后世瞩目的成就，被高斯誉为&quot;数学中的皇冠&quot;。在计算机科学中，数论广泛应用于密码学等领域。" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+                <GridView Margin="0,10,0,0">
+                    <GridView.Items>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo3.jpg" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo4.jpg" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo5.jpg" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo6.jpg" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo7.jpg" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Width="120" Height="120">
+                            <Image Source="Assets/photo8.jpg" Stretch="Fill"/>
+                        </Grid>
+                    </GridView.Items>
+                </GridView>
+            </StackPanel>-->
