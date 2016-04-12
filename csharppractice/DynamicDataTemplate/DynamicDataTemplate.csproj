@@ -95,6 +95,8 @@
     <None Include="project.json" />
     <Content Include="Assets\comments.png" />
     <Content Include="Assets\like.png" />
+    <Content Include="Assets\photoh.png" />
+    <Content Include="Assets\photom.png" />
     <Content Include="SampleData.json" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +104,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Img.cs" />
+    <Compile Include="ImgDataTemplateSelector.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
