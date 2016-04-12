@@ -15,7 +15,7 @@
             <Setter Property="FontSize" Value="16"></Setter>
         </Style>
         <DataTemplate x:Key="newdatatemplate" x:DataType="models:News">
-            <StackPanel Orientation="Vertical" Padding="10" Background="White">
+            <StackPanel Orientation="Vertical" Padding="10" Background="White" Margin="0,3">
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Rectangle RadiusX="25" RadiusY="25" Height="40" Width="40" Margin="0,0,10,0">
                         <Rectangle.Fill>
@@ -39,6 +39,16 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
+                        <TextBlock Text="{x:Bind like_num}" Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
+                        <TextBlock Text="{x:Bind comment_num}"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -48,45 +58,55 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Content="getdata" Grid.Row="0" Click="Button_Click"></Button>
-        <ListView Grid.Row="1" Name="newslist" ItemTemplate="{StaticResource newdatatemplate}">
+        <ListView Grid.Row="1" Name="newslist" ItemsSource="{x:Bind ViewModel.Items}" ItemTemplate="{StaticResource newdatatemplate}">
         </ListView>
+        <!--<StackPanel Orientation="Vertical" Padding="10" Background="White" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Rectangle RadiusX="25" RadiusY="25" Height=" 40" Width="40" Margin="0,0,10,0">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="Assets/dowin10.jpg"></ImageBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Text="天堂迈舞" Style="{StaticResource UsernameTextBlock}"></TextBlock>
+                    <TextBlock Text="今天19:58" Style="{StaticResource TimeTextBlock}"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="hiho一下教你编程系列是hihoCoder推出的帮助大家按照一定知识体系逐渐提高自身编程能力的系列比赛。未来几周我们将和小Hi小Ho一起学习数论算法。数论在数学中有特殊的地位，有一大批牛B闪闪的数学家做出过令后世瞩目的成就，被高斯誉为&quot;数学中的皇冠&quot;。在计算机科学中，数论广泛应用于密码学等领域。" TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
+            <GridView Margin="0,10,0,0">
+                <GridView.Items>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo3.jpg" Stretch="Fill"/>
+                    </Grid>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo4.jpg" Stretch="Fill"/>
+                    </Grid>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo5.jpg" Stretch="Fill"/>
+                    </Grid>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo6.jpg" Stretch="Fill"/>
+                    </Grid>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo7.jpg" Stretch="Fill"/>
+                    </Grid>
+                    <Grid Width="120" Height="120">
+                        <Image Source="Assets/photo8.jpg" Stretch="Fill"/>
+                    </Grid>
+                </GridView.Items>
+            </GridView>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
+                    <TextBlock Text="10086" Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
+                    <TextBlock Text="10086"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Page>
-<!--<StackPanel Orientation="Vertical" Padding="10" Background="White">
-                <StackPanel Orientation="Horizontal" Margin="0,10">
-                    <Rectangle RadiusX="25" RadiusY="25" Height=" 40" Width="40" Margin="0,0,10,0">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="Assets/dowin10.jpg"></ImageBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock Text="天堂迈舞" Style="{StaticResource UsernameTextBlock}"></TextBlock>
-                        <TextBlock Text="今天19:58" Style="{StaticResource TimeTextBlock}"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="hiho一下教你编程系列是hihoCoder推出的帮助大家按照一定知识体系逐渐提高自身编程能力的系列比赛。未来几周我们将和小Hi小Ho一起学习数论算法。数论在数学中有特殊的地位，有一大批牛B闪闪的数学家做出过令后世瞩目的成就，被高斯誉为&quot;数学中的皇冠&quot;。在计算机科学中，数论广泛应用于密码学等领域。" TextWrapping="Wrap"></TextBlock>
-                </StackPanel>
-                <GridView Margin="0,10,0,0">
-                    <GridView.Items>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo3.jpg" Stretch="Fill"/>
-                        </Grid>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo4.jpg" Stretch="Fill"/>
-                        </Grid>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo5.jpg" Stretch="Fill"/>
-                        </Grid>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo6.jpg" Stretch="Fill"/>
-                        </Grid>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo7.jpg" Stretch="Fill"/>
-                        </Grid>
-                        <Grid Width="120" Height="120">
-                            <Image Source="Assets/photo8.jpg" Stretch="Fill"/>
-                        </Grid>
-                    </GridView.Items>
-                </GridView>
-            </StackPanel>-->
