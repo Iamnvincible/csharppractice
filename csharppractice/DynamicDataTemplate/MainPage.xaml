@@ -154,7 +154,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="getdata" Grid.Row="0" Click="Button_Click"></Button>
         <ListView Grid.Row="1" Name="newslist" ItemsSource="{x:Bind ViewModel.Items}" ItemTemplateSelector="{StaticResource ImgDataTemplateSelector}" SelectionMode="None"/>
         <!--<StackPanel Orientation="Vertical" Padding="10" Background="White" Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="0,10">
