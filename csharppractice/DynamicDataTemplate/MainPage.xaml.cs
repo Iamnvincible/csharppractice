@@ -34,9 +34,9 @@ namespace DynamicDataTemplate
         public MainPage()
         {
             this.InitializeComponent();
-            getdata();
         }
-        private async void getdata()
+
+        private async Task getdata()
         {
             string jsonstr = await GetJsonFromFile();
             JsonObject jo = JsonObject.Parse(jsonstr);
@@ -56,7 +56,7 @@ namespace DynamicDataTemplate
                     }
                 }
             }
-            //this.newslist.ItemsSource = list;
+            this.newslist.ItemsSource = list;
         }
         private async Task<string> GetJsonFromFile()
         {
@@ -78,6 +78,11 @@ namespace DynamicDataTemplate
                 Debug.WriteLine(e.Message);
             }
             return null;
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await getdata();
         }
     }
 }

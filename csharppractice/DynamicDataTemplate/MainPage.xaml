@@ -43,7 +43,12 @@
         </DataTemplate>
     </Page.Resources>
     <Grid Background="#FFF7F7F7">
-        <ListView Name="newslist" ItemTemplate="{StaticResource newdatatemplate}" ItemsSource="{x:Bind list,Mode=OneWay}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="getdata" Grid.Row="0" Click="Button_Click"></Button>
+        <ListView Grid.Row="1" Name="newslist" ItemTemplate="{StaticResource newdatatemplate}">
         </ListView>
     </Grid>
 </Page>
