@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{24BAA2C8-E9E6-4543-9D54-BB02179A4357}</ProjectGuid>
+    <ProjectGuid>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DynamicDataTemplate</RootNamespace>
