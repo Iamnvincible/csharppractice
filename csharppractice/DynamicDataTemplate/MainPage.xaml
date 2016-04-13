@@ -14,6 +14,48 @@
         <Style x:Name="UsernameTextBlock" x:Key="UsernameTextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"></Setter>
         </Style>
+        <Style x:Name="LikeCommentButton" x:Key="LikeCommentButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="Grid">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFFFFF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFFFFF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Gray"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Gray"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Border" BorderThickness="0">
+                                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <local:ImgDataTemplateSelector x:Key="ImgDataTemplateSelector">
             <local:ImgDataTemplateSelector.OnePhotoTemplate>
                 <DataTemplate x:DataType="models:News">
@@ -130,7 +172,7 @@
                             </GridView.ItemTemplate>
                         </GridView>
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button Background="#00000000">
+                            <Button Background="#00000000" Style="{StaticResource LikeCommentButton}">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
@@ -138,7 +180,7 @@
                                     </StackPanel>
                                 </Button.Content>
                             </Button>
-                            <Button Background="#00000000">
+                            <Button Background="#00000000" Style="{StaticResource LikeCommentButton}">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
