@@ -92,23 +92,11 @@
       "img": [
         {
           "img_id": "图片的id，缩略图和原图相同",
+          "img_small_src": "ms-appx:///Assets/photoh.png"
+        },
+        {
+          "img_id": "图片的id，缩略图和原图相同",
           "img_small_src": "ms-appx:///Assets/photo1.jpg"
-        },
-        {
-          "img_id": "图片的id，缩略图和原图相同",
-          "img_small_src": "ms-appx:///Assets/photo10.jpg"
-        },
-        {
-          "img_id": "图片的id，缩略图和原图相同",
-          "img_small_src": "ms-appx:///Assets/photo3.jpg"
-        },
-        {
-          "img_id": "图片的id，缩略图和原图相同",
-          "img_small_src": "ms-appx:///Assets/photo4.jpg"
-        },
-        {
-          "img_id": "图片的id，缩略图和原图相同",
-          "img_small_src": "ms-appx:///Assets/photo5.jpg"
         }
       ],
       "like_num": 13,

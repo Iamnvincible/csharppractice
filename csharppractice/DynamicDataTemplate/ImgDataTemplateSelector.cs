@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace DynamicDataTemplate
 {
@@ -17,17 +18,33 @@ namespace DynamicDataTemplate
         protected override DataTemplate SelectTemplateCore(System.Object item, DependencyObject container)
         {
             FrameworkElement element = container as FrameworkElement;
-
-            if (element != null && item != null && item is News)
+            var father = GetParentObject<GridView>(element, "PhotoGrid");
+            var itemssource = father.ItemsSource as Img[];
+            //if (element != null && item != null && item is Img[])
+            if (father != null && itemssource != null)
             {
-                News newsitem = item as News;
-
-                if (newsitem.img.Length == 1)
+                if (itemssource.Length == 1)
                     return OnePhotoTemplate;
-                else if (newsitem.img.Length == 2)
+                else if (itemssource.Length == 2)
                     return TwoPhotoTemplate;
                 else return MorePhotoTemplate;
             }
+            return null;
+        }
+        public T GetParentObject<T>(DependencyObject obj, string name) where T : FrameworkElement
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(obj);
+
+            while (parent != null)
+            {
+                if (parent is T && (((T)parent).Name == name | string.IsNullOrEmpty(name)))
+                {
+                    return (T)parent;
+                }
+
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
             return null;
         }
     }
