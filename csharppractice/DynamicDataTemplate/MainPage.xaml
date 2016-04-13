@@ -38,7 +38,7 @@
                                     <VisualState x:Name="Pressed">
                                         <Storyboard>
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Blue"/>
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#D5D5D5"/>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -186,14 +186,26 @@
                     </GridView.ItemsPanel>
                 </GridView>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
-                        <TextBlock Text="{x:Bind like_num}" Foreground="Gray" Margin="5,0,5,2"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
-                        <TextBlock Text="{x:Bind comment_num}"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
-                    </StackPanel>
+                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">-->
+                    <Button Style="{StaticResource LikeCommentButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
+                                <TextBlock Text="{x:Bind like_num}" Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <!--</StackPanel>-->
+                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">-->
+                    <Button Style="{StaticResource LikeCommentButton}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
+                                <TextBlock Text="{x:Bind comment_num}"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <!--</StackPanel>-->
                 </StackPanel>
             </StackPanel>
         </DataTemplate>

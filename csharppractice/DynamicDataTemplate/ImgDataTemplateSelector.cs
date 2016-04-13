@@ -34,7 +34,6 @@ namespace DynamicDataTemplate
         public T GetParentObject<T>(DependencyObject obj, string name) where T : FrameworkElement
         {
             DependencyObject parent = VisualTreeHelper.GetParent(obj);
-
             while (parent != null)
             {
                 if (parent is T && (((T)parent).Name == name | string.IsNullOrEmpty(name)))
@@ -44,7 +43,6 @@ namespace DynamicDataTemplate
 
                 parent = VisualTreeHelper.GetParent(parent);
             }
-
             return null;
         }
     }
