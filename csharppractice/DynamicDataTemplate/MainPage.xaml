@@ -6,8 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:converters="using:DynamicDataTemplate.ValueConverters"
     xmlns:models="using:DynamicDataTemplate.Data">
     <Page.Resources>
+        <converters:LikeValueConverter x:Key="LikeValueConverter"></converters:LikeValueConverter>
         <Style x:Name="TimeTextBlock" x:Key="TimeTextBlock" TargetType="TextBlock">
             <Setter Property="FontSize" Value="10"></Setter>
         </Style>
@@ -44,9 +46,9 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <Border x:Name="Border" BorderThickness="0">
-                                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
+                            <Grid x:Name="Border" BorderThickness="0">
+                                <ContentPresenter x:Name="ContentPresenter" Foreground="{TemplateBinding Foreground}"  AutomationProperties.AccessibilityView="Raw" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -189,9 +191,9 @@
                     <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">-->
                     <Button Style="{StaticResource LikeCommentButton}">
                         <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="Gray" />
-                                <TextBlock Text="{x:Bind like_num}" Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                            <StackPanel Orientation="Horizontal" Margin="10,5">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE19F;" Foreground="{x:Bind is_my_like,Converter={StaticResource LikeValueConverter}}" />
+                                <TextBlock Text="{x:Bind like_num}" Foreground="{x:Bind is_my_like,Converter={StaticResource LikeValueConverter}}" Margin="5,0,5,2"></TextBlock>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -199,8 +201,8 @@
                     <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">-->
                     <Button Style="{StaticResource LikeCommentButton}">
                         <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray" />
+                            <StackPanel Orientation="Horizontal" Margin="10,5">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray"/>
                                 <TextBlock Text="{x:Bind comment_num}"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
                             </StackPanel>
                         </Button.Content>

@@ -13,6 +13,7 @@ using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,5 +37,6 @@ namespace DynamicDataTemplate
             this.InitializeComponent();
             ViewModel = new MainViewModel();
         }
+
     }
 }
