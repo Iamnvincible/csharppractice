@@ -15,7 +15,7 @@ namespace DynamicDataTemplate
 {
    public  class MyFeedsViewModel
    {
-       public ObservableCollection<MyFeeds> Items { get; set; } = new ObservableCollection<MyFeeds>();
+       public ObservableCollection<DynamicDataTemplate.Data.MyFeeds> Items { get; set; } = new ObservableCollection<DynamicDataTemplate.Data.MyFeeds>();
         public MyFeedsViewModel()
         {
             getdata();
@@ -35,8 +35,8 @@ namespace DynamicDataTemplate
                         string rs = item.Stringify();
                         byte[] array = Encoding.UTF8.GetBytes(rs);
                         MemoryStream stream = new MemoryStream(array);
-                        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(MyNotification));
-                        var s = (MyFeeds)ser.ReadObject(stream);
+                        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(DynamicDataTemplate.Data.MyFeeds));
+                        var s = (DynamicDataTemplate.Data.MyFeeds)ser.ReadObject(stream);
                         Items.Add(s);
                     }
                 }
