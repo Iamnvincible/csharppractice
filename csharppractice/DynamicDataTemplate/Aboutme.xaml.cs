@@ -22,9 +22,11 @@ namespace DynamicDataTemplate
     /// </summary>
     public sealed partial class Aboutme : Page
     {
+        public AboutmeViewModel ViewModel;
         public Aboutme()
         {
             this.InitializeComponent();
+            ViewModel = new AboutmeViewModel();
         }
     }
 }

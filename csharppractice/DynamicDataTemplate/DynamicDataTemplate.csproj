@@ -92,6 +92,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="samplenoti.json" />
     <None Include="project.json" />
     <Content Include="Assets\comments.png" />
     <Content Include="Assets\like.png" />
@@ -103,10 +104,12 @@
     <Compile Include="Aboutme.xaml.cs">
       <DependentUpon>Aboutme.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AboutmeViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Img.cs" />
+    <Compile Include="Data\MyNotification.cs" />
     <Compile Include="ImgDataTemplateSelector.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
