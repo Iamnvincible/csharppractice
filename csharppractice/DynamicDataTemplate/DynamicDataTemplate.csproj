@@ -99,6 +99,7 @@
     <Content Include="Assets\photoh.png" />
     <Content Include="Assets\photom.png" />
     <Content Include="SampleData.json" />
+    <None Include="samplemy.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aboutme.xaml.cs">
@@ -109,6 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Img.cs" />
+    <Compile Include="Data\MyFeeds.cs" />
     <Compile Include="Data\MyNotification.cs" />
     <Compile Include="GetOneorNonePicValueConverter.cs" />
     <Compile Include="ImgDataTemplateSelector.cs" />
@@ -117,6 +119,9 @@
     </Compile>
     <Compile Include="Data\News.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="MyFeeds.xaml.cs">
+      <DependentUpon>MyFeeds.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NotifyContentTemplateSelector.cs" />
     <Compile Include="NotifyTypeValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +166,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MyFeeds.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
