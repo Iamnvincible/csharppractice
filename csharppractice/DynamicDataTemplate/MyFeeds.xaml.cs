@@ -22,9 +22,11 @@ namespace DynamicDataTemplate
     /// </summary>
     public sealed partial class MyFeeds : Page
     {
+        public MyFeedsViewModel ViewModel;
         public MyFeeds()
         {
             this.InitializeComponent();
+            ViewModel = new MyFeedsViewModel();
         }
     }
 }

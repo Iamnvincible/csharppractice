@@ -122,6 +122,7 @@
     <Compile Include="MyFeeds.xaml.cs">
       <DependentUpon>MyFeeds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyFeedsViewModel.cs" />
     <Compile Include="NotifyContentTemplateSelector.cs" />
     <Compile Include="NotifyTypeValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

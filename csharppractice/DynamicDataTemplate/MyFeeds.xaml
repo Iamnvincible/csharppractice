@@ -8,6 +8,30 @@
     xmlns:model="using:DynamicDataTemplate.Data"
     mc:Ignorable="d">
     <Page.Resources>
+        <local:ImgDataTemplateSelector x:Key="ImgDataTemplateSelector">
+            <local:ImgDataTemplateSelector.OnePhotoTemplate>
+                <DataTemplate  x:DataType="model:Img">
+                    <Grid MaxWidth="280">
+                        <Image  Source="{x:Bind img_small_src}" Stretch="UniformToFill"/>
+                    </Grid>
+                </DataTemplate>
+            </local:ImgDataTemplateSelector.OnePhotoTemplate>
+            <local:ImgDataTemplateSelector.TwoPhotoTemplate>
+                <DataTemplate x:DataType="model:Img">
+                    <Grid MinWidth="150" MaxWidth="160">
+                        <Image Source="{x:Bind img_small_src}" Stretch="UniformToFill"/>
+                    </Grid>
+                </DataTemplate>
+
+            </local:ImgDataTemplateSelector.TwoPhotoTemplate>
+            <local:ImgDataTemplateSelector.MorePhotoTemplate>
+                <DataTemplate x:DataType="model:Img">
+                    <Grid Height="100" Width="100">
+                        <Image Source="{Binding img_small_src}" Stretch="UniformToFill"/>
+                    </Grid>
+                </DataTemplate>
+            </local:ImgDataTemplateSelector.MorePhotoTemplate>
+        </local:ImgDataTemplateSelector>
         <local:NotifyContentTemplateSelector x:Key="NotifyContentTemplateSelector">
             <local:NotifyContentTemplateSelector.RemarkTemplate>
                 <DataTemplate x:DataType="model:MyFeeds">
@@ -20,8 +44,7 @@
                             </Rectangle>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Bind nickname}" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
-                                    <TextBlock Text="{x:Bind type,Converter={StaticResource NotifyTypeValueConverter}}" Style="{StaticResource LikedTextBlock}"></TextBlock>
+                                    <TextBlock Text="微软大法好" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
                                 </StackPanel>
                                 <TextBlock Text="{x:Bind created_time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
                             </StackPanel>
@@ -29,14 +52,30 @@
                         <StackPanel>
                             <TextBlock Text="{x:Bind content}" TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
-                        <Grid Margin="0,5" Background="#FFF8F8F8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="{Binding article_photo_src,Converter={StaticResource GetOneorNonePicValueConverter}}" MinHeight="0" MinWidth="0" MaxWidth="60" MaxHeight="60" Stretch="UniformToFill" Margin=" 5"></Image>
-                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Bind article_content}" TextWrapping="Wrap"></TextBlock>
-                        </Grid>
+                        <GridView Name="PhotoGrid" Margin="0,10,0,0" IsItemClickEnabled="True" MinHeight="0" ItemsSource="{x:Bind img}" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ItemTemplateSelector="{StaticResource ImgDataTemplateSelector}">
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                        </GridView>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button Style="{StaticResource LikeCommentButton}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5">
+                                        <TextBlock Text="{x:Bind like_num}" Margin="5,0,5,2"></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Style="{StaticResource LikeCommentButton}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5">
+                                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;" Foreground="Gray"/>
+                                        <TextBlock Text="{x:Bind remark_num}"   Foreground="Gray" Margin="5,0,5,2"></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </local:NotifyContentTemplateSelector.RemarkTemplate>
@@ -51,28 +90,20 @@
                             </Rectangle>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Bind nickname}" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
-                                    <TextBlock Text="{x:Bind type,Converter={StaticResource NotifyTypeValueConverter}}" Style="{StaticResource LikedTextBlock}"></TextBlock>
+                                    <TextBlock Text="微软大法好" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
                                 </StackPanel>
                                 <TextBlock Text="{x:Bind created_time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
                             </StackPanel>
                         </StackPanel>
-                        <Grid Margin="0,5" Background="#FFF8F8F8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <!--<Image Grid.Column="0" Source="{x:Bind photo_src}" Height="60" Width="60" Stretch="UniformToFill"></Image>-->
-                            <Image Grid.Column="0" Source="{Binding article_photo_src,Converter={StaticResource GetOneorNonePicValueConverter}}" MinHeight="0" MinWidth="0" MaxWidth="60" MaxHeight="60" Stretch="UniformToFill" Margin=" 5"></Image>
-                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Bind article_content}" TextWrapping="Wrap"></TextBlock>
-                        </Grid>
+
                     </StackPanel>
                 </DataTemplate>
             </local:NotifyContentTemplateSelector.PraiseTemplate>
         </local:NotifyContentTemplateSelector>
-
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView ItemTemplateSelector="{StaticResource NotifyContentTemplateSelector}" ItemsSource="{x:Bind ViewModel.Items}">
 
+        </ListView>
     </Grid>
 </Page>
