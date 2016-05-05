@@ -110,12 +110,15 @@
     </Compile>
     <Compile Include="Data\Img.cs" />
     <Compile Include="Data\MyNotification.cs" />
+    <Compile Include="GetOneorNonePicValueConverter.cs" />
     <Compile Include="ImgDataTemplateSelector.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\News.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="NotifyContentTemplateSelector.cs" />
+    <Compile Include="NotifyTypeValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\LikeValueConverter.cs" />
   </ItemGroup>

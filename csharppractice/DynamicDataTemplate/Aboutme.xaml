@@ -8,12 +8,69 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <Style x:Name="TimeTextBlock" x:Key="TimeTextBlock" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="10"></Setter>
-        </Style>
-        <Style x:Name="UsernameTextBlock" x:Key="UsernameTextBlock" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"></Setter>
-        </Style>
+        <local:NotifyContentTemplateSelector x:Key="NotifyContentTemplateSelector">
+            <local:NotifyContentTemplateSelector.RemarkTemplate>
+                <DataTemplate x:DataType="model:MyNotification">
+                    <StackPanel Orientation="Vertical" Padding="10"  Margin="0,3" Background="White">
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <Rectangle RadiusX="25" RadiusY="25" Height="40" Width="40" Margin="0,0,10,0">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="{x:Bind photo_src}"></ImageBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind nickname}" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
+                                    <TextBlock Text="{x:Bind type,Converter={StaticResource NotifyTypeValueConverter}}" Style="{StaticResource LikedTextBlock}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="{x:Bind created_time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind content}" TextWrapping="Wrap"></TextBlock>
+                        </StackPanel>
+                        <Grid Margin="0,5" Background="#FFF8F8F8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding article_photo_src,Converter={StaticResource GetOneorNonePicValueConverter}}" MinHeight="0" MinWidth="0" MaxWidth="60" MaxHeight="60" Stretch="UniformToFill" Margin=" 5"></Image>
+                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Bind article_content}" TextWrapping="Wrap"></TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </local:NotifyContentTemplateSelector.RemarkTemplate>
+            <local:NotifyContentTemplateSelector.PraiseTemplate>
+                <DataTemplate x:DataType="model:MyNotification">
+                    <StackPanel Orientation="Vertical" Padding="10"  Margin="0,3" Background="White">
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <Rectangle RadiusX="25" RadiusY="25" Height="40" Width="40" Margin="0,0,10,0">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="{x:Bind photo_src}"></ImageBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind nickname}" Style="{StaticResource UsernameTextBlock}" Margin="0,0,15,0"></TextBlock>
+                                    <TextBlock Text="{x:Bind type,Converter={StaticResource NotifyTypeValueConverter}}" Style="{StaticResource LikedTextBlock}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="{x:Bind created_time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                        <Grid Margin="0,5" Background="#FFF8F8F8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<Image Grid.Column="0" Source="{x:Bind photo_src}" Height="60" Width="60" Stretch="UniformToFill"></Image>-->
+                            <Image Grid.Column="0" Source="{Binding article_photo_src,Converter={StaticResource GetOneorNonePicValueConverter}}" MinHeight="0" MinWidth="0" MaxWidth="60" MaxHeight="60" Stretch="UniformToFill" Margin=" 5"></Image>
+                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Bind article_content}" TextWrapping="Wrap"></TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </local:NotifyContentTemplateSelector.PraiseTemplate>
+        </local:NotifyContentTemplateSelector>
+
     </Page.Resources>
     <Grid Background="#FFECECEC">
         <!--<Grid.RowDefinitions>
@@ -68,42 +125,12 @@
             </Grid>
         </StackPanel>
         -->
-        <ListView ItemsSource="{x:Bind ViewModel.Items}">
+        <ListView ItemsSource="{x:Bind ViewModel.Items}" ItemTemplateSelector="{StaticResource NotifyContentTemplateSelector}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MyNotification">
-                    <StackPanel Orientation="Vertical" Padding="10"  Margin="0,3" Background="White">
-                        <StackPanel Orientation="Horizontal" Margin="0,10">
-                            <Rectangle RadiusX="25" RadiusY="25" Height="40" Width="40" Margin="0,0,10,0">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="{x:Bind photo_src}"></ImageBrush>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <TextBlock Text="{x:Bind nickname}" Style="{StaticResource UsernameTextBlock}"></TextBlock>
-                                <TextBlock Text="{x:Bind type}" Style="{StaticResource UsernameTextBlock}"></TextBlock>
-                                <TextBlock Text="{x:Bind created_time}" Style="{StaticResource TimeTextBlock}"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="{x:Bind content}" TextWrapping="Wrap"></TextBlock>
-                        </StackPanel>
-                        <Grid Margin="0,0" Background="#FFF8F8F8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="{x:Bind photo_src}" Height="60" Width="60" Stretch="UniformToFill"></Image>
-                            <TextBlock Grid.Column="1" Margin="10" Text="{x:Bind article_content}" TextWrapping="Wrap"></TextBlock>
-                        </Grid>
-                    </StackPanel>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>
