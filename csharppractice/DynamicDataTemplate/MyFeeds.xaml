@@ -52,7 +52,7 @@
                         <StackPanel>
                             <TextBlock Text="{x:Bind content}" TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
-                        <GridView Name="PhotoGrid" Margin="0,10,0,0" IsItemClickEnabled="True" MinHeight="0" ItemsSource="{x:Bind img}" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ItemTemplateSelector="{StaticResource ImgDataTemplateSelector}">
+                        <GridView Name="PhotoGrid" Margin="0,10,0,0" IsItemClickEnabled="True" MinHeight="0" ItemsSource="{x:Bind photo_src}" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ItemTemplateSelector="{StaticResource ImgDataTemplateSelector}">
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
@@ -103,7 +103,11 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView ItemTemplateSelector="{StaticResource NotifyContentTemplateSelector}" ItemsSource="{x:Bind ViewModel.Items}">
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
 </Page>

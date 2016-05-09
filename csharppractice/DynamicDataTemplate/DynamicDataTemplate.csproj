@@ -99,7 +99,7 @@
     <Content Include="Assets\photoh.png" />
     <Content Include="Assets\photom.png" />
     <Content Include="SampleData.json" />
-    <None Include="samplemy.json" />
+    <Content Include="samplemy.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aboutme.xaml.cs">
