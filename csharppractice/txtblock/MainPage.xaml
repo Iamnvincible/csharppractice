@@ -30,6 +30,14 @@
             <TextBlock Text="23454345" TextWrapping="Wrap"/>
             <TextBlock Text="23454345"/>
         </GridView>-->
-        <TextBlock local:TextBlockFormatter.FormattedText="{x:Bind str,Converter={StaticResource stringconverter}}"/>
+        <TextBlock local:TextBlockFormatter.FormattedText="{x:Bind str,Converter={StaticResource stringconverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+
+        <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Run Text="This" FontWeight="Bold" Foreground="Red" />
+    <Run Text="text" FontSize="18" />
+    <Run Text="is" FontStyle="Italic" />
+    <Run Text="one" FontFamily="Candara" FontSize="20" />
+    <Run Text="TextBlock" FontWeight="Bold" Foreground="Blue" />
+        </TextBlock>-->
     </Grid>
 </Page>

@@ -22,7 +22,7 @@ namespace txtblock
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public string str { get; set; } = "#微软创新杯#ImagineCup #2016#中国区总决赛";
+        public string str { get; set; } = "#微软创新杯#ImagineCup #2016#中国#区总决赛";
         public MainPage()
         {
             this.InitializeComponent();

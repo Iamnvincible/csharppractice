@@ -102,12 +102,19 @@
         </local:NotifyContentTemplateSelector>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemTemplateSelector="{StaticResource NotifyContentTemplateSelector}" ItemsSource="{x:Bind ViewModel.Items}">
+        <!--<ListView ItemTemplateSelector="{StaticResource NotifyContentTemplateSelector}" ItemsSource="{x:Bind ViewModel.Items}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
-        </ListView>
+        </ListView>-->
+        <TextBlock FontSize="20">
+            <TextBlock.Inlines>
+                <Run Text="普通文字" />
+                <Run Text="加颜色的文字" Foreground="Red" />
+            </TextBlock.Inlines>
+        </TextBlock>
+        <RichTextBlockOverflow></RichTextBlockOverflow>
     </Grid>
 </Page>
