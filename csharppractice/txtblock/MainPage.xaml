@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="txtblock.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:txtblock"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:stringconverter x:Key="stringconverter"></local:stringconverter>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{x:Bind str}">
+        <!--<ContentControl>
+            <Binding Converter="{StaticResource stringconverter}"></Binding>
+        </ContentControl>-->
+        <!--<GridView IsItemClickEnabled="False" SelectionMode="None">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Height" Value="0"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+            <TextBlock Text="23454345"/>
+            <TextBlock Text="23454345"/>
+            <TextBlock Text="23454345"/>
+            <TextBlock Text="23454345"/>
+            <TextBlock Text="23454345"/>
+            <TextBlock Text="999999" TextWrapping="Wrap"/>
+            <TextBlock Text="88888888" TextWrapping="Wrap"/>
+            <TextBlock Text="23454345" TextWrapping="Wrap"/>
+            <TextBlock Text="23454345"/>
+        </GridView>-->
+        <TextBlock local:TextBlockFormatter.FormattedText="{x:Bind str,Converter={StaticResource stringconverter}}"/>
+    </Grid>
+</Page>
