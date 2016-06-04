@@ -8,6 +8,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <local:stringconverter x:Key="stringconverter"></local:stringconverter>
+        <local:Converter x:Key="Converter"></local:Converter>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{x:Bind str}">
         <!--<ContentControl>
@@ -31,7 +32,21 @@
             <TextBlock Text="23454345"/>
         </GridView>-->
         <TextBlock local:TextBlockFormatter.FormattedText="{x:Bind str,Converter={StaticResource stringconverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-
+        <ListView Name="listview" SelectionChanged="Selectionchanged" IsItemClickEnabled="True" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}"/>
+                        <Button Content="kkkkkk" Click="Button_Click" HorizontalAlignment="Right" Visibility="{Binding vis, Converter={StaticResource Converter}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
         <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
     <Run Text="This" FontWeight="Bold" Foreground="Red" />
     <Run Text="text" FontSize="18" />
